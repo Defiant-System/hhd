@@ -1,17 +1,42 @@
 
+// device frame
 backdrop-filter: blur(9px);
-border: 1px solid rgba(#000,.25);
-border-radius: 19px;
-
+border: 0;
+border-radius: 37px;
+box-shadow: 0 0 0 17px #313944,
+			0 3px 11px rgba(#000,.3),
+			0 7px 27px rgba(#000,.3),
+			0 13px 37px rgba(#000,.3);
 
 .win-caption-bar_ {
-	height: 23px;
-	// z-index: 1;
+	top: -17px;
+	left: -17px;
+	right: -17px;
+	height: calc( 100% + 34px );
+	z-index: 16;
+
+	&:before,
+	&:after {
+		content: "";
+		background: #313944;
+		position: absolute;
+		top: 91px;
+		left: -5px;
+		width: 5px;
+		height: 29px;
+		border-radius: 4px 0 0 4px;
+	}
+
+	&:after {
+		top: 141px;
+		height: 59px;
+	}
 
 	.win-caption-title_ {
-		height: inherit;
+		position: relative;
 		left: 0;
 		width: 100%;
+		height: 100%;
 	}
 
 	.win-caption-buttons_ {
@@ -21,8 +46,8 @@ border-radius: 19px;
 
 .win-body_ {
 	// background: transparent;
-	background: rgba(#000,.1);
 	overflow: visible;
+	background: linear-gradient(180deg, rgba(#000,.35), rgba(#000,.75));
 	border-radius: inherit;
 }
 
@@ -33,9 +58,67 @@ content {
 	left: 0;
 	right: 0;
 	bottom: 0;
+	z-index: 2;
 	display: flex;
 	flex-direction: column;
 	border-radius: inherit;
+
+	.frame {
+		position: absolute;
+		top: -17px;
+		left: -17px;
+		right: -17px;
+		bottom: -17px;
+		overflow: hidden;
+		border-radius: 53px;
+		pointer-events: none;
+
+		&:before {
+			content: "";
+			background: #313944;
+			position: absolute;
+			top: 17px;
+			left: 97px;
+			right: 97px;
+			height: 21px;
+			z-index: 1;
+			border-radius: 0 0 21px 21px;
+		}
+
+		&:after {
+			content: "";
+			background: linear-gradient(-21deg, rgba(#fff,.0), rgba(#fff,.1));
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 111%;
+			width: 73%;
+			transform: translateY(-11%) translateX(83%) rotate(-15deg);
+			z-index: 2;
+		}
+
+		.speaker {
+			background: rgba(#fff,.05);
+			position: absolute;
+			top: 17px;
+			left: 139px;
+			right: 161px;
+			height: 9px;
+			z-index: 1;
+			border-radius: 9px;
+
+			&:before {
+				content: "";
+				background: inherit;
+				position: absolute;
+				top: 0;
+				right: -29px;
+				width: 9px;
+				height: 9px;
+				border-radius: 9px;
+			}
+		}
+	}
 
 	.reel {
 		// background: rgba(#000,.1);
@@ -72,17 +155,17 @@ content {
 		&:before {
 			content: "";
 			// backdrop-filter: blur(5px);
-			background: rgba(#fff,.1);
+			background: rgba(#fff,.05);
 			position: absolute;
 			top: 11px;
 			left: 11px;
 			right: 11px;
 			bottom: 11px;
-			border-radius: 11px;
+			border-radius: 31px;
 		}
 
 		> span {
-			background-color: rgba(#000,.1);
+			// background-color: rgba(#000,.1);
 			position: relative;
 			z-index: 2;
 			display: inline-block;
@@ -106,7 +189,7 @@ content {
 		margin: 5px 5px 11px;
 
 		&.slot {
-			// background-color: rgba(#000,.1);
+			background-color: rgba(#000,.1);
 		}
 
 		&[data-name] {
@@ -120,8 +203,8 @@ content {
 				background-image: var( --icon );
 				position: absolute;
 				top: -1px;
-				left: 5px;
-				right: 5px;
+				left: 6px;
+				right: 6px;
 				bottom: 13px;
 			}
 
