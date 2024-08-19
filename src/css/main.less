@@ -71,12 +71,13 @@ box-shadow: 0 0 0 17px #313944,
 	overflow: visible;
 	background: linear-gradient(180deg, rgba(#000,.35), rgba(#000,.75));
 	border-radius: inherit;
+	pointer-events: none;
 }
 
 
 content {
 	position: absolute;
-	top: 0;
+	top: 23px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -84,10 +85,11 @@ content {
 	display: flex;
 	flex-direction: column;
 	border-radius: inherit;
+	pointer-events: all;
 
 	.frame {
 		position: absolute;
-		top: -17px;
+		top: -40px;
 		left: -17px;
 		right: -17px;
 		bottom: -17px;
@@ -146,33 +148,47 @@ content {
 		// background: rgba(#000,.1);
 		position: relative;
 		flex: 1;
-		padding: 23px 0 0 17px;
+		padding: 0 0 0 17px;
 	}
 
 	.nav {
 		// background: rgba(#922,.1);
 		position: relative;
-		height: 29px;
+		height: 41px;
 		padding-top: 3px;
 		list-style: none;
 		text-align: center;
 		font-size: 0;
 
 		li {
-			background: rgba(#000,.075);
+			background: rgba(#000,.05);
+			position: relative;
 			display: inline-block;
 			width: 17px;
 			height: 17px;
 			margin: 0 3px;
 			border-radius: 50%;
 			box-shadow: inset 0 3px 5px rgba(#000,.15);
+
+			&.active {
+				&:before {
+					content: "";
+					position: absolute;
+					top: 5px;
+					left: 5px;
+					right: 5px;
+					bottom: 5px;
+					border-radius: 50%;
+					background: rgba(#fff,.15);
+				}
+			}
 		}
 	}
 
 	.dock {
 		position: relative;
-		height: 115px;
-		padding: 21px 0 0 17px;
+		height: 125px;
+		padding: 26px 0 0 17px;
 
 		&:before {
 			content: "";
@@ -196,22 +212,78 @@ content {
 			height: 73px;
 			border-radius: 7px;
 			margin: 0 5px;
+
+			&:before {
+				content: "";
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				background-size: contain;
+				background-image: var( --icon );
+				position: absolute;
+				top: 3px;
+				left: 3px;
+				right: 3px;
+				bottom: 3px;
+			}
 		}
 	}
 }
 
 .view {
-	> span {
+	span {
 		position: relative;
 		display: inline-block;
 		vertical-align: top;
+
+		&.slot {
+			background-color: rgba(#000,.1);
+		}
+	}
+
+	> span {
 		width: 73px;
 		height: 73px;
 		border-radius: 7px;
 		margin: 5px 5px 11px;
 
 		&.slot {
-			background-color: rgba(#000,.1);
+			&.group {
+				background-color: rgba(#000,.25);
+				padding: 5px 0 0 5px;
+				font-size: 0;
+
+				&:after {
+					content: "";
+					background: rgba(#000,.15);
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 2;
+					border-radius: inherit;
+				}
+
+				> .slot {
+					width: 19px;
+					height: 19px;
+					border-radius: 3px;
+					margin: 0 3px 3px 0;
+
+					&:before {
+						content: "";
+						background-repeat: no-repeat;
+						background-position: 50% 50%;
+						background-size: contain;
+						background-image: var( --icon );
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+					}
+				}
+			}
 		}
 
 		&[data-name] {
