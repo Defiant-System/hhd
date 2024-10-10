@@ -1,12 +1,5 @@
-<MenuBar>
-	<Menu name="HHD">
-		<Menu name="About HHD" shell="win -a"/>
-		<Menu type="divider"/>
-		<Menu name="Quit HHD" shell="win -c"/>
-	</Menu>
-	<Menu name="Help">
-		<Menu name="Help" click="open-help"/>
-		<Menu type="divider"/>
-		<Menu name="License" shell="win -al"/>
-	</Menu>
-</MenuBar>
+<Menu for="hhd">
+	<Menu name="About Handheld Device" shell="win -a"/>
+	<Menu type="divider"/>
+	<Menu name="Quit Handheld Device" shell="win -c"/>
+</Menu>
