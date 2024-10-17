@@ -1,6 +1,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template name="reel">
+		<div class="logo-place-holder"></div>
 		<div class="view" data-click="open-app">
 			<xsl:for-each select="./View">
 				<xsl:call-template name="view" />
